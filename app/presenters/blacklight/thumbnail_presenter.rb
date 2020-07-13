@@ -47,7 +47,7 @@ module Blacklight
       value = if thumbnail_method
                 view_context.send(thumbnail_method, document, image_options)
               elsif thumbnail_field
-                image_url = thumbnail_value_from_document
+                image_url = thumbnail_value_from_document + "?file=thumbnail"
                 view_context.image_tag image_url, image_options if image_url.present?
               end
 

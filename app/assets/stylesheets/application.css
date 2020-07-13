@@ -18,3 +18,29 @@
  *= require  'blacklight_range_limit'
  *
 */
+
+
+body {
+    background: #e2e1e0;
+}
+
+span.document-counter {
+	display: none;
+}
+
+.document {
+	border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    background-color: #ffffff;
+    margin-bottom: 1em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+    border-radius: .25rem;
+}
+
+.document-thumbnail {
+	    margin-right: 2rem;
+}
+
+.facet-limit {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+}
