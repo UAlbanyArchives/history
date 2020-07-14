@@ -1,0 +1,14 @@
+<% if @search_context[:prev] || @search_context[:next] %>
+  <div class='pagination-search-widgets'>
+  
+    <div class="page-links">
+      <%= link_to_previous_document @search_context[:prev] %> |
+
+      <%= item_page_entry_info %> |
+
+      <%= link_to_next_document @search_context[:next] %>
+    </div>
+    <%= link_to t('blacklight.header_links.search_history'), blacklight.search_history_path, class: 'btn btn-primary float-right' %>
+  </div>
+<% end %>
+

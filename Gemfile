@@ -59,6 +59,8 @@ end
 # Customizations
 gem 'blacklight', '>= 7.0'
 gem 'blacklight_range_limit'
+# This could be trouble, I dunno how supported it is https://github.com/nono/HTML-Truncator
+gem 'truncate_html'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

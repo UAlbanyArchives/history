@@ -7,7 +7,7 @@
     <% if field_name == "Description" %>
     	<dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= field_presenter.render %></dd>
     <% else %>
-    	<dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= truncate(field_presenter.render, length: 300) %></dd>
+    	<dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= truncate_html(field_presenter.render, length: 300) %></dd>
     <% end %>
   <% end -%>
 
