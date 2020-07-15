@@ -16,6 +16,10 @@
  *
  * Used by blacklight_range_limit
  *= require  'blacklight_range_limit'
+ *= require  'grenander/headerNavbar'
+ *= require  'grenander/browseNav'
+ *= require  'grenander/searchSubnav'
+ *= require  'font-awesome'
  *
 */
 
@@ -26,6 +30,11 @@ body {
 
 span.document-counter {
 	display: none;
+}
+
+
+.card-columns {
+	column-count: 4;
 }
 
 .document {
@@ -143,4 +152,11 @@ a:hover {
 
 .subject-cards:hover, .subject-cards:active {
 	background-color: #EBE6F0;
+}
+
+
+.edit-btm {
+	position: absolute;
+	right:    0;
+	bottom:   0;
 }

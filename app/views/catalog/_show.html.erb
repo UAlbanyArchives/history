@@ -55,6 +55,7 @@
 			<% else %>
 				<iframe id="pdfViewer" src=<%= document._source["file"] %> class="embededPDF"></iframe>
 			<% end %>
+			<a href="https://archives.albany.edu/history-editor/events/<%= document._source["id"] %>/edit" type="button" class="btn btn-light float-right edit-btm">Edit</a>
 		</div>
 	<% else %>
 
@@ -65,6 +66,7 @@
 			    <dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= CGI.unescapeHTML(field_presenter.render).html_safe  %></dd>
 			  <% end -%>
 			</dl>
+			<a href="https://archives.albany.edu/history-editor/events/<%= document._source["id"] %>/edit" type="button" class="btn btn-light float-right">Edit</a>
 		</div>
 
 	<% end %>
