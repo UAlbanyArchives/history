@@ -123,6 +123,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'subjects', label: 'Subjects'
     config.add_show_field 'citation_files', label: 'Citations'
     config.add_show_field 'citation_description', label: 'Citation description'
+    config.add_show_field 'citation_pages', label: 'Citation pages'
 
     config.add_show_field 'title_vern_ssim', label: 'Title'
     config.add_show_field 'subtitle_tsim', label: 'Subtitle'

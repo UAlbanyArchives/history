@@ -8,7 +8,11 @@
 			<% if document._source["iiif"][0] == "true" %>
 				<div class="uv" data-locale="en-GB:English (GB),cy-GB:Cymraeg" data-config="" data-uri="<%= document._source["representative_media"] %>/manifest" data-collectionindex="0" data-manifestindex="0" data-sequenceindex="0" data-canvasindex="0" data-rotation="0" style="width:100%; background-color: #000"></div><script type="text/javascript" id="embedUV" src="https://archives.albany.edu/universalviewer/dist/uv-2.0.1/lib/embed.js"></script><script type="text/javascript">/* wordpress fix */</script>
 			<% else %>
-				<iframe id="pdfViewer" src=<%= document._source["file"] %> class="embededPDF"></iframe>
+                <% if document._source["representative_media"].blank? and document._source["citation_pages"].present? %>
+                    <iframe id="pdfViewer" src="<%= document._source["file"] %>#page=<%= document._source["citation_pages"][0] %>" class="embededPDF"></iframe>
+                <% else %>
+                    <iframe id="pdfViewer" src="<%= document._source["file"] %>" class="embededPDF"></iframe>
+                <% end %>
 			<% end %>
             <div class="btn-btm">
                 <a href="https://archives.albany.edu/history-editor/events/<%= document._source["id"] %>/edit" type="button" class="btn btn-light float-right edit-btm">Edit</a>
