@@ -29,7 +29,7 @@
 	              <h4>Subjects</h4>
 	              <ul class="list-group mb-3">
 	                <% document._source["subjects"].sort.each do |subject| %>
-	                  <a href="/catalog?f[subjects][]=<%= subject %>" class="list-group-item list-group-item-action list-group-item-info"><%= subject %></a>
+	                  <a href="/history/catalog?f[subjects][]=<%= subject %>" class="list-group-item list-group-item-action list-group-item-info"><%= subject %></a>
 	                <% end %>
 	              </ul>
 	            </div>
