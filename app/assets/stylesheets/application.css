@@ -153,10 +153,3 @@ a:hover {
 .subject-cards:hover, .subject-cards:active {
 	background-color: #EBE6F0;
 }
-
-
-.edit-btm {
-	position: absolute;
-	right:    0;
-	bottom:   0;
-}
