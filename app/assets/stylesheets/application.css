@@ -32,6 +32,9 @@ span.document-counter {
 	display: none;
 }
 
+.documents-list .document .document-thumbnail > a > img {
+    max-width: 200px;
+}
 
 iframe#pdfViewer, .uv {
     width: 100%;
