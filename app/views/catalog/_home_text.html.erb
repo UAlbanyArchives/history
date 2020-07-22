@@ -7,7 +7,7 @@
 <div class="card-columns">
 <% subject_options.sort.each do |name, url| %>
 
-	<a href="/history/catalog?f[subjects][]=<%= name %>">
+	<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>">
 		<div class="card subject-cards">
 		  <img class="card-img-top" src="<%= url %>?file=thumbnail">
 		  <div class="card-body text-center">
