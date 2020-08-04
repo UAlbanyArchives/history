@@ -1,20 +1,57 @@
 <div class="text-center p-5">
   <h1 class="jumbotron-heading">UAlbany History</h1>
 
-  <p class="lead">Discover events from the school's history.</p>
+  <p class="lead">Discover events from the university's history.</p>
 
 </div>
+
+<form class="form-inline justify-content-center" action="/history">
+	<div class="form-group mb-5">
+		
+			<input class="center-search form-control" type="text" placeholder="Search UAlbany History..." name="q">
+			<input type="hidden" name="search_field" value="all_fields">
+			<button type="submit" class="btn btn-primary">Search</button>
+		
+	</div>
+</form>
+
+
 <div class="card-columns">
-<% subject_options.sort.each do |name, url| %>
 
-	<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>">
-		<div class="card subject-cards">
-		  <img class="card-img-top" src="<%= url %>?file=thumbnail">
-		  <div class="card-body text-center">
-		  	<h5 class="card-title"><%= name %></h5>
-		  </div>
+	<% subject_options.sort.each do |name, url| %>
+
+		<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>">
+			<div class="card subject-cards">
+			<img class="card-img-top" src="<%= url %>?file=thumbnail">
+			<div class="card-body text-center">
+				<h5 class="card-title"><%= name %></h5>
+			</div>
+			</div>
+		</a>
+
+	<% end %>
+
+	<% decades = (184..200) %>
+	<div class="card decade-card">
+		<div class="card-header">
+			Decades
 		</div>
-	</a>
+		<div class="list-group">
+			<% decades.each do |decade_number| %>
+				<% decade = decade_number.to_s + "0" %>
+				<% decade_end = decade.to_i + 10 %>
+				<% search_path = "?range[date][begin]=" + decade + "&range[date][end]=" + decade_end.to_s %>
+				<% decade_count = decade_counter(search_path, decade, decade_end.to_s) %>
 
-<% end %>
+				<a href="/history<%= search_path %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+					<%= decade %> - <%= decade_end.to_s %>
+					<span class="badge badge-primary badge-pill"><%= decade_count %></span>
+				</a>
+
+			<% end %>
+		</div>
+	</div>
+
+	
+
 </div>

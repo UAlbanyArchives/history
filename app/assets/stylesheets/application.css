@@ -44,11 +44,10 @@ iframe#pdfViewer, .uv {
 @media screen and (min-width: 992px) {
     iframe#pdfViewer, .uv {
         height: 30rem;
-    }
-}
-
-.card-columns {
-	column-count: 4;
+	}
+	.card-columns {
+		column-count: 4;
+	}
 }
 
 .document {
@@ -90,14 +89,14 @@ a:hover {
 .btn-primary:active,
 .btn-primary.active {
 	color: #eaaa00;
-	background-color: #642a90;
-	border-color: #642a90;
+	background-color: #642a90 !important;
+	border-color: #642a90 !important;
 }
 
 .btn:focus {
 	border-color: #9e68c7 ;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7 ;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7 ;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7 !important;
 }
 
 .page-sidebar .panel-body {
@@ -166,4 +165,28 @@ a:hover {
 
 .subject-cards:hover, .subject-cards:active {
 	background-color: #EBE6F0;
+}
+
+.list-group-item span.badge {
+	background-color: #006c68;
+} 
+
+.card-columns .card {
+	border-top-color: #eaaa00 !important;
+	border-bottom-color: #eaaa00 !important;
+	border-left-color: #eaaa00 !important;
+	border-right-color: #eaaa00 !important;
+}
+
+.decade-card .card-header {
+	background-color: #f8e1a5 !important;
+}
+
+.center-search {
+	min-width: 500px;
+}
+
+.center-search:focus {
+	border-color: #9e68c7;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7;
 }
