@@ -1,14 +1,29 @@
+
+
+
+<div class="card-body row">
+ 
+  <div class="col-md-12">
+    <h5 class="card-title"><%= document['title'] %></h5>
+    <p class="text-muted"><%= document["display_date"] %></p>
+  </div>
+
+  <% if document.key?("file") %>
+    <div class="col-sm-12 col-md-4 order-md-2 col-lg-4 order-lg-2 col-xl-12 order-xl-1 text-center">
+      <img src="<%= document['file'] + '?file=thumbnail' %>" alt="Thumbnail of <%= document['title'] %>" %>
+    </div>
+    <div class="col-sm-12 col-md-8 order-md-1 col-lg-8 order-lg-1 col-xl-12 order-xl-2">
+    <p class="card-text"><%= truncate_html(document["description"], length: 300) %></p>
+    </div>
+
+  <% else %>
+    <div class="col-md-12">
+      <p class="card-text"><%= truncate_html(document["description"], length: 300) %></p>
+    </div>
+  <% end %>
+
+  
+
+</div>
+
 <% doc_presenter = index_presenter(document) %>
-<%# default partial to display solr document fields in catalog index view -%>
-<dl class="document-metadata dl-invert row">
-
-  <% doc_presenter.fields_to_render.each do |field_name, field, field_presenter| -%>
-    <dt class="blacklight-<%= field_name.parameterize %> col-md-3"><%= render_index_field_label document, label: field_presenter.label, field: field_name %></dt>
-    <% if field_name == "Description" %>
-    	<dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= field_presenter.render %></dd>
-    <% else %>
-    	<dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= truncate_html(field_presenter.render, length: 300) %></dd>
-    <% end %>
-  <% end -%>
-
-</dl>

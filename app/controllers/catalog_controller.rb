@@ -33,7 +33,7 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title'
     #config.index.display_type_field = 'format'
-    config.index.thumbnail_field = 'file'
+    #config.index.thumbnail_field = 'file'
 
     #config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 

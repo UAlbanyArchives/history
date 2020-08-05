@@ -1,0 +1,196 @@
+#documents {
+
+}
+
+
+#documents::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #46166B;
+    top: 50px;
+    bottom: 70px;
+    left: 50%;
+    margin-left: -3px;
+  }
+
+  .doc-container {
+    padding: 0px 40px !important;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+
+  .doc-container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -13px;
+    background-color: white;
+    border: 4px solid #eaaa00;
+    top: 45px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+
+.doc-container:nth-child(odd) {
+    left: 0;
+}
+.doc-container:nth-child(even) {
+    left: 50%;
+}
+
+.doc-container:nth-child(odd)::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 45px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+}
+.doc-container:nth-child(even)::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 45px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+.doc-container:nth-child(even)::after {
+    left: -12px;
+}
+
+.document {
+    /*padding: 20px 30px;*/
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
+
+.doc-container:nth-child(odd) .document .documentHeader h3 {
+    text-align: right;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 1200px) {
+
+    .doc-container:nth-child(odd) .document .documentHeader h3 {
+        text-align: left;
+    }
+
+/* Place the timelime to the left */
+    #documents::after {
+    left: 31px;
+    }
+
+/* Full-width containers */
+    .doc-container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    }
+
+/* Make sure that all arrows are pointing leftwards */
+    .doc-container::before {
+    left: 30px;
+    border: medium solid white  !important;
+    border-width: 10px 10px 10px 0 !important;
+    border-color: transparent white transparent transparent !important;
+    }
+
+/* Make sure all circles are at the same spot */
+    .doc-container:nth-child(odd)::after, .doc-container:nth-child(even)::after {
+    left: 4px;
+    }
+
+/* Make all right containers behave like the left ones */
+    .doc-container:nth-child(even) {
+    left: 0%;
+    }
+}
+
+.doc-container .document {
+    padding: 0rem !important;
+}
+
+.doc-container a:hover {
+    text-decoration: none;
+}
+
+
+.doc-container .card {
+    border: none;
+}
+
+.doc-container .card:hover {
+    background-color: #EBE6F0;
+}
+
+.doc-container .card .card-title {
+    padding-left: 0rem;
+}
+
+.doc-container .card img {
+    max-width: 170px;
+    max-height: 170px;
+    margin: auto;
+}
+
+
+section.show-document {
+
+}
+
+section.show-document::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #46166B;
+    /*top: 90px;*/
+    top: 40px;
+    bottom: 0px;
+    left: -20px;
+    margin-left: -3px;
+  }
+
+section.show-document .document::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: -48px;
+    background-color: white;
+    border: 4px solid #eaaa00;
+    top: 43px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+
+section.show-document .document {
+    left: 0;
+}
+
+section.show-document .document::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 45px;
+    width: 0;
+    z-index: 1;
+    left: -10px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}

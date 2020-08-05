@@ -1,0 +1,17 @@
+<% # container for a single doc -%>
+<div class="doc-container">
+    <% if counter = document_counter_with_offset(document_counter) %>
+        <span class="document-counter">
+        <%= t('blacklight.search.documents.counter', counter: counter) %>
+        </span>
+    <% end %>
+    
+    <%= link_to url_for_document(document), document_link_params(document, {:counter => counter}) do %>
+
+        <article class="document card <%= render_document_class document %> document-position-<%= document_counter%> " data-document-counter="<%= document_counter %>" itemscope itemtype="<%= document.itemtype %>">
+        <%= render_document_partials document,
+            blacklight_config.view_config(document_index_view_type).partials,
+            document_counter: document_counter %>
+        </article>
+    <% end %>
+</div>
