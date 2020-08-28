@@ -51,7 +51,7 @@
 	        <% if document["citation_description"].present? %>
 	            <div class="card-body">
 	                <h4>Source Details</h4>
-	                <p class="card-text"><%= document["citation_description"] %></p>
+	                <p class="card-text"><%= CGI.unescapeHTML(document["citation_description"]).html_safe %></p>
 	            </div>
 	        <% end %>
 
