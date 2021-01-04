@@ -16,9 +16,10 @@
  *
  * Used by blacklight_range_limit
  *= require  'blacklight_range_limit'
- *= require  'grenander/headerNavbar'
- *= require  'grenander/browseNav'
- *= require  'grenander/searchSubnav'
+ *= require  'grenander/main'
+ *= require  'grenander/navbar'
+ *= require  'grenander/search-source'
+ *= require  'grenander/footer'
  *= require  'font-awesome'
  *
 */

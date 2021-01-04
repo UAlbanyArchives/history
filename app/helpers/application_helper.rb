@@ -1,6 +1,10 @@
 module ApplicationHelper
 	require 'net/http'
 
+	def source_name
+      'UAlbany History'
+    end
+
 	def subject_options
 		config=YAML.load_file(Rails.root.join("config/subjects.yml"))
 

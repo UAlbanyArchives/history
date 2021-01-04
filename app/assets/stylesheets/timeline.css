@@ -12,6 +12,11 @@
     bottom: 70px;
     left: 50%;
     margin-left: -3px;
+    margin-top: -50px;
+  }
+
+  .timeline-container {
+    position: relative;
   }
 
   .doc-container {
@@ -87,6 +92,10 @@
 
     .doc-container:nth-child(odd) .document .documentHeader h3 {
         text-align: left;
+    }
+
+    #documents::after {
+        margin-left: -17px;
     }
 
 /* Place the timelime to the left */
