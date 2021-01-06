@@ -161,7 +161,7 @@ section.show-document {
 
 }
 
-section.show-document::after {
+div.object::after {
     content: '';
     position: absolute;
     width: 6px;
@@ -173,7 +173,7 @@ section.show-document::after {
     margin-left: -3px;
   }
 
-section.show-document .document::after {
+div.object .document::after {
     content: '';
     position: absolute;
     width: 25px;
@@ -187,11 +187,11 @@ section.show-document .document::after {
   }
 
 
-section.show-document .document {
+div.object .document {
     left: 0;
 }
 
-section.show-document .document::before {
+div.object .document::before {
     content: " ";
     height: 0;
     position: absolute;
@@ -202,4 +202,8 @@ section.show-document .document::before {
     border: medium solid white;
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
+}
+
+section.show-document .container {
+    position: inherit;
 }
