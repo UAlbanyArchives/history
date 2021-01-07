@@ -44,11 +44,20 @@ iframe#pdfViewer, .uv {
 }
 
 @media screen and (min-width: 992px) {
-    iframe#pdfViewer, .uv {
-        height: 30rem;
-	}
 	.card-columns {
 		column-count: 4;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.card-columns {
+		column-count: 5;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.card-columns {
+		column-count: 6;
 	}
 }
 
