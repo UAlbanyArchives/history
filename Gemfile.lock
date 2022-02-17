@@ -298,7 +298,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
-  rails (~> 5.2.5)
+  rails (~> 5.2.6)
   rsolr (>= 1.0, < 3)
   sass-rails (~> 5.0)
   selenium-webdriver
