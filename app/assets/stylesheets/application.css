@@ -16,9 +16,11 @@
  *
  * Used by blacklight_range_limit
  *= require  'blacklight_range_limit'
- *= require  'grenander/headerNavbar'
- *= require  'grenander/browseNav'
- *= require  'grenander/searchSubnav'
+ *= require  'grenander/main'
+ *= require  'grenander/navbar'
+ *= require  'grenander/search-source'
+ *= require  'grenander/main'
+ *= require  'grenander/footer'
  *= require  'font-awesome'
  *
 */
@@ -42,11 +44,20 @@ iframe#pdfViewer, .uv {
 }
 
 @media screen and (min-width: 992px) {
-    iframe#pdfViewer, .uv {
-        height: 30rem;
-	}
 	.card-columns {
 		column-count: 4;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.card-columns {
+		column-count: 5;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.card-columns {
+		column-count: 6;
 	}
 }
 
@@ -70,66 +81,6 @@ iframe#pdfViewer, .uv {
 	padding-left: 1.25rem;
 }
 
-a {
-	color: #642a90;
-}
-
-a:hover {
-	color: #006c68;
-}
-
-.btn-primary {
-	color: #EBE6F0;
-	background-color: #46166B;
-	border-color: #46166B;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active {
-	color: #eaaa00;
-	background-color: #642a90 !important;
-	border-color: #642a90 !important;
-}
-
-.btn:focus {
-	border-color: #9e68c7 ;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7 ;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7 !important;
-}
-
-.page-sidebar .panel-body {
-	font-size: .85em; 
-	line-height: 1.15em;
-}
-
-.page-sidebar .facet-values .facet-label {
-	padding-bottom: 12px;
-}
-
-.facet-limit-active {
-	border-color: #eaaa00!important;
-	border-top-color: #eaaa00!important;
-	border-bottom-color: #eaaa00!important;
-	border-left-color: #eaaa00!important;
-	border-right-color: #eaaa00!important;
-}
-
-.facet-limit-active .card-header {
-	background-color: #f8e1a5!important;
-}
-
-
-.facet-values li .facet-select {
-	color: #006c68!important;
-}
-
-.facet-values li .selected {
-	color: #006c68!important;
-	font-weight: 700;
-}
-
 .sort-pagination,
 .pagination-search-widgets {
   margin-bottom: 1em;
@@ -138,7 +89,7 @@ a:hover {
 
 .list-group-item-info {
 	background-color: #9e68c7;
-	color: #e2e1e0;
+	color: #fff;
 }
 
 .list-group-item-info.list-group-item-action:hover, .list-group-item-info.list-group-item-action:focus {

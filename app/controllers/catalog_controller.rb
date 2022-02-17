@@ -78,7 +78,7 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'subjects', label: 'Subjects'
+    config.add_facet_field 'subjects', label: 'Subjects', limit: 15, index_range: 'A'..'Z'
     config.add_facet_field 'date', label: 'Date', range: true
     config.add_facet_field 'format', label: 'Format'
     config.add_facet_field 'pub_date_ssim', label: 'Publication Year', single: true
@@ -166,34 +166,34 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('title') do |field|
+    #config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = {
-        'spellcheck.dictionary': 'title',
-        qf: '${title_qf}',
-        pf: '${title_pf}'
-      }
-    end
+    #  field.solr_parameters = {
+    #    'spellcheck.dictionary': 'title',
+    #    qf: '${title_qf}',
+    #    pf: '${title_pf}'
+    #  }
+    #end
 
-    config.add_search_field('author') do |field|
-      field.solr_parameters = {
-        'spellcheck.dictionary': 'author',
-        qf: '${author_qf}',
-        pf: '${author_pf}'
-      }
-    end
+    #config.add_search_field('author') do |field|
+    #  field.solr_parameters = {
+    #    'spellcheck.dictionary': 'author',
+    #    qf: '${author_qf}',
+    #    pf: '${author_pf}'
+    #  }
+    #end
 
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
-    config.add_search_field('subject') do |field|
-      field.qt = 'search'
-      field.solr_parameters = {
-        'spellcheck.dictionary': 'subject',
-        qf: '${subject_qf}',
-        pf: '${subject_pf}'
-      }
-    end
+    #config.add_search_field('subject') do |field|
+    #  field.qt = 'search'
+    #  field.solr_parameters = {
+    #    'spellcheck.dictionary': 'subject',
+    #    qf: '${subject_qf}',
+    #    pf: '${subject_pf}'
+    #  }
+    #end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

@@ -64,7 +64,8 @@ gem "font-awesome-rails"
 gem 'truncate_html'
 
 # shared header, footer, etc.
-gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander'
+gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "new_nav"
+#gem 'grenander', path: '../update/grenander'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,28 +1,10 @@
-<div class="text-center p-5">
-  <h1 class="jumbotron-heading">UAlbany History</h1>
-
-  <p class="lead">Discover events from the university's history.</p>
-
-</div>
-
-<form class="form-inline justify-content-center" action="/history">
-	<div class="form-group mb-5">
-		
-			<input class="center-search form-control" type="text" placeholder="Search UAlbany History..." name="q">
-			<input type="hidden" name="search_field" value="all_fields">
-			<button type="submit" class="btn btn-primary">Search</button>
-		
-	</div>
-</form>
-
-
 <div class="card-columns">
 
 	<% subject_options.sort.each do |name, url| %>
 
 		<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>">
 			<div class="card subject-cards">
-			<img class="card-img-top" src="<%= url %>?file=thumbnail">
+			<img class="card-img-top" src="<%= url %>?file=thumbnail" alt="Thumbnail image for <%= name %>">
 			<div class="card-body text-center">
 				<h5 class="card-title"><%= name %></h5>
 			</div>
@@ -54,4 +36,21 @@
 
 	
 
+</div>
+
+<div class="card col-md-6 col-lg-9">
+	<div class="card-body">
+		<h4 class="card-title">About</h4>
+		<p class="card-text">Much of the content in this timeline was originally curated by former University Archvist Geoffrey P. Williams as part of the <i><a href="<%= request.base_url + "/web/chronology" %>">Chronological History of the University at Albany, SUNY, 1844-2008</a></i>. Content was also drawn from the <i><a href="<%= request.base_url + "/web/onthemake" %>">University on the Make, 1960-1970</a></i> exhibit.</p>
+
+		<h5 class="card-subtitle mb-2 text-muted">Additional Contributors</h5>
+		<ul>
+			<li>David Abril</li>
+			<li>Ben Covell</li>
+			<li>Roni Kotel</li>
+			<li>Sheri Sarnoff</li>
+			<li>Saul Zeitlin</li>
+		</ul>
+
+	</div>
 </div>
