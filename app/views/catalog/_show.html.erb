@@ -8,9 +8,13 @@
 			
 			<% if document["iiif"][0] == "true" %>
 				<% if document.key? "representative_media" %>
-					<div class="uv" data-locale="en-GB:English (GB),cy-GB:Cymraeg" data-config="" data-uri="<%= document["representative_media"] %>/manifest" data-collectionindex="0" data-manifestindex="0" data-sequenceindex="0" data-canvasindex="0" data-rotation="0" style="width:100%; background-color: #000"></div><script type="text/javascript" id="embedUV" src="https://archives.albany.edu/universalviewer/dist/uv-2.0.1/lib/embed.js"></script><script type="text/javascript">/* wordpress fix */</script>
+					<div class="uv" style="width:100%; background-color: #000">
+						<iframe aria-label="image view" src="https://archives.albany.edu/uv/uv.html#?manifest=<%= document["representative_media"] %>/manifest;config=https://archives.albany.edu/uv/uv-config.json" allowfullscreen="true" frameborder="0"></iframe>
+					</div>
 				<% else %>
-					<div class="uv" data-locale="en-GB:English (GB),cy-GB:Cymraeg" data-config="" data-uri="<%= document["citation_links"][0] %>/manifest" data-collectionindex="0" data-manifestindex="0" data-sequenceindex="0" data-canvasindex="0" data-rotation="0" style="width:100%; background-color: #000"></div><script type="text/javascript" id="embedUV" src="https://archives.albany.edu/universalviewer/dist/uv-2.0.1/lib/embed.js"></script><script type="text/javascript">/* wordpress fix */</script>
+					<div class="uv" style="width:100%; background-color: #000">
+						<iframe aria-label="image view" src="https://archives.albany.edu/uv/uv.html#?manifest=<%= document["citation_links"][0] %>/manifest;config=https://archives.albany.edu/uv/uv-config.json" allowfullscreen="true" frameborder="0"></iframe>
+					</div>
 				<% end %>
 			<% else %>
                 <% if document["representative_media"].blank? and document["citation_pages"].present? %>
