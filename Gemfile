@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.7.1'
+gem 'rails', '~> 5.2.8.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -57,7 +57,7 @@ group :test do
 end
 
 # Customizations
-gem 'blacklight', '>= 7.0'
+gem 'blacklight', '>= 7.33.0'
 gem 'blacklight_range_limit'
 gem "font-awesome-rails"
 # This could be trouble, I dunno how supported it is https://github.com/nono/HTML-Truncator
@@ -79,7 +79,6 @@ gem 'bootstrap', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 gem "addressable", ">= 2.8.0"
-
 
 gem "nokogiri", ">= 1.13.9"
 
