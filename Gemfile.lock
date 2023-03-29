@@ -76,22 +76,21 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     bindex (0.8.1)
-    blacklight (8.0.0)
+    blacklight (7.33.1)
+      deprecation
       globalid
+      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 6.1, < 8)
-      view_component (>= 2.66, < 3.1)
-    blacklight_range_limit (8.3.0)
-      blacklight (>= 7.25.2, < 9)
-      deprecation
+      rails (>= 5.1, < 7.1)
+      view_component (~> 2.66)
+    blacklight_range_limit (7.9.1)
+      blacklight (~> 7.0)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     bootstrap (4.6.2)
@@ -109,16 +108,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     d3-rails (7.0.0)
@@ -144,6 +133,7 @@ GEM
       sass (>= 3.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -154,7 +144,6 @@ GEM
     http-form_data (2.3.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -174,10 +163,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.8.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -219,6 +207,10 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
+    rack-mini-profiler (2.3.4)
+      rack (>= 1.2.0)
+    rack-proxy (0.7.6)
+      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (6.1.7.3)
@@ -259,19 +251,14 @@ GEM
       faraday (>= 0.9, < 3, != 2.0.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    ruby_dep (1.5.0)
     rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -284,15 +271,13 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_range (3.0.0)
     solr_wrapper (4.0.2)
       http
       minitar
       retriable
       ruby-progressbar
     spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -312,8 +297,6 @@ GEM
       railties (>= 3.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -326,6 +309,15 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    webpacker (5.4.4)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -338,35 +330,32 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  addressable (>= 2.8.0)
-  blacklight (>= 7.33.0)
-  blacklight_range_limit
-  bootsnap (>= 1.1.0)
+  blacklight (~> 7.33.0)
+  blacklight_range_limit (~> 7.9.1)
+  bootsnap (>= 1.4.4)
   bootstrap (~> 4.0)
   byebug
-  capybara (>= 2.15)
-  chromedriver-helper
-  coffee-rails (~> 4.2)
+  capybara (>= 3.26)
   font-awesome-rails
   grenander!
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.7)
   jquery-rails
-  listen (>= 3.0.5, < 3.2)
-  nokogiri (>= 1.13.9)
+  listen (~> 3.3)
   puma (~> 5.6.4)
+  rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7.3)
   rsolr (>= 1.0, < 3)
-  sass-rails (~> 5.0)
-  selenium-webdriver
+  sass-rails (~> 6)
+  selenium-webdriver (>= 4.0.0.rc1)
   solr_wrapper (>= 0.3)
   spring
-  spring-watcher-listen (~> 2.0.0)
-  sqlite3
+  sqlite3 (~> 1.6.2)
   truncate_html
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
   tzinfo-data
-  uglifier (>= 1.3.0)
-  web-console (>= 3.3.0)
+  web-console (>= 4.1.0)
+  webdrivers
+  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 2.7.7p221
