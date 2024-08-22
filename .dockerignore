@@ -1,0 +1,7 @@
+Dockerfile
+.git
+.gitignore
+db/production.sqlite
+db/development.sqlite
+config/master.key
+log/*
