@@ -26,11 +26,13 @@ Building the `history` image:
 docker build --build-arg MASTER_KEY=$(cat ./config/master.key) -t history .
 ```
 
-Running the image
+Running the image in the background:
 ```
 docker-compose up -d
 ```
 Navigate to [http://localhost:8081/history](http://localhost:8081/history)
+
+&#8594; In production, this should be set up to run as a service
 
 To stop:
 ```
