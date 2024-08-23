@@ -1,11 +1,7 @@
-FROM ruby:2.7.7-slim-bullseye
+FROM ruby:2.7.7-slim-bullseye AS builder
 MAINTAINER Gregory Wiedeman gwiedeman@albany.edu
 
 ENV RAILS_ENV=production
-
-# Expose port 3000
-ARG DEFAULT_PORT 3000
-EXPOSE ${DEFAULT_PORT}
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y build-essential apt-utils git cron curl nodejs
@@ -35,12 +31,29 @@ RUN bundle install
 # Copy application code
 COPY . /app
 
-# Copy master.key to build context for asset precompilation
+# Precompile assets using environment variable
 ARG MASTER_KEY
-RUN mkdir -p /app/config && echo $MASTER_KEY > /app/config/master.key
+RUN mkdir -p /app/config && echo "$MASTER_KEY" > /app/config/master.key && \
+    RAILS_ENV=production MASTER_KEY=$MASTER_KEY bundle exec rails assets:precompile && \
+    rm /app/config/master.key
 
-# precompile assets
-RUN rails assets:precompile
+# Final image
+FROM ruby:2.7.7-slim-bullseye
+
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y build-essential apt-utils git cron curl nodejs
+# The regular apt install yarn isn't as up to date as we need
+RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && \
+    apt-get install -y yarn
+
+# Copy application code and precompiled assets from the builder stage
+COPY --from=builder /app /app
+
+# Expose port 3000
+ARG DEFAULT_PORT 3000
+EXPOSE ${DEFAULT_PORT}
 
 # Copy the entrypoint script
 COPY entrypoint.sh /usr/bin/entrypoint.sh

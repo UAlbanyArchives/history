@@ -9,6 +9,7 @@ services:
     volumes:
       - ./log:/app/log
       - ./db:/app/db
+      - ./config/master.key:/app/config/master.key
     environment:
       - RAILS_ENV=production
       # These override config/puma.rb, but are defaults anyway.
