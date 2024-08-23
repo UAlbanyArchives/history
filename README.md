@@ -12,6 +12,8 @@ docker-compose -f docker-compose-dev.yml up
 
 Navigate to [http://localhost:3000/history](http://localhost:3000/history)
 
+You should be able to edit code in real time.
+
 When you're done:
 ```
 docker-compose down
@@ -28,7 +30,7 @@ Running the image
 ```
 docker-compose up -d
 ```
-Navigate to [http://localhost:3000/history](http://localhost:3000/history)
+Navigate to [http://localhost:8081/history](http://localhost:8081/history)
 
 To stop:
 ```
