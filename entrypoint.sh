@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Define the path to the SQLite database
-DB_PATH="/app/db/production.sqlite"
+DB_PATH="/app/db/production.sqlite3"
 
 # Check if the SQLite database file exists
 if [ ! -f "$DB_PATH" ]; then
@@ -13,8 +13,9 @@ else
 fi
 
 # Precompile assets if necessary
-echo "Precompiling assets..."
-bundle exec rails assets:precompile
+# This shouldn't be necessary, as the Dockerfile does it now.
+#echo "Precompiling assets..."
+#bundle exec rails assets:precompile
 
 # Start the Rails server
 echo "Starting Rails server..."

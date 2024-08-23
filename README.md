@@ -39,5 +39,5 @@ docker-compose down
 
 If you need another terminal:
 ```
-docker exec -it history /bin/bash
+docker exec -it history bash
 ```

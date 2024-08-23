@@ -2,8 +2,6 @@ FROM ruby:2.7.7-slim-bullseye
 MAINTAINER Gregory Wiedeman gwiedeman@albany.edu
 
 ENV RAILS_ENV=production
-ENV WEB_CONCURRENCY=2
-ENV RAILS_MAX_THREADS=5
 
 # Expose port 3000
 ARG DEFAULT_PORT 3000
@@ -37,16 +35,16 @@ RUN bundle install
 # Copy application code
 COPY . /app
 
-# Copy the entrypoint script
-COPY entrypoint.sh /usr/bin/entrypoint.sh
-RUN chmod +x /usr/bin/entrypoint.sh
-
 # Copy master.key to build context for asset precompilation
 ARG MASTER_KEY
 RUN mkdir -p /app/config && echo $MASTER_KEY > /app/config/master.key
 
 # precompile assets
 RUN rails assets:precompile
+
+# Copy the entrypoint script
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 
 # Start cron and Rails server
 CMD ["sh", "-c", "cron && /usr/bin/entrypoint.sh"]
