@@ -21,9 +21,13 @@ docker-compose down
 
 ### For deployment
 
-Building the `history` image:
+Building the `history` image locally:
 ```
-docker build --build-arg MASTER_KEY=$(cat ./config/master.key) -t history .
+DOCKER_BUILDKIT=1 docker build --secret id=master_key,src=config/master.key -t history .
+```
+On Windows
+```
+$env:DOCKER_BUILDKIT=1; docker build --secret id=master_key,src=config/master.key -t history .
 ```
 
 Running the image in the background:

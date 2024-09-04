@@ -31,10 +31,11 @@ RUN bundle install
 # Copy application code
 COPY . /app
 
-# Precompile assets using environment variable
-ARG MASTER_KEY
-RUN mkdir -p /app/config && echo "$MASTER_KEY" > /app/config/master.key && \
-    RAILS_ENV=production MASTER_KEY=$MASTER_KEY bundle exec rails assets:precompile && \
+# Use build secret for master key
+RUN --mount=type=secret,id=master_key \
+    mkdir -p /app/config && \
+    cp /run/secrets/master_key /app/config/master.key && \
+    RAILS_ENV=production MASTER_KEY=$(cat /app/config/master.key) bundle exec rails assets:precompile && \
     rm /app/config/master.key
 
 # Final image
@@ -48,8 +49,10 @@ RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     apt-get update && \
     apt-get install -y yarn
 
-# Copy application code and precompiled assets from the builder stage
+# Copy application code from the builder stage and install gems
 COPY --from=builder /app /app
+WORKDIR /app
+RUN bundle install
 
 # Expose port 3000
 ARG DEFAULT_PORT 3000

@@ -3,7 +3,7 @@ version: '3.1'
 services:
   history:
     container_name: history
-    build: .
+    image: history
     ports:
       - '0.0.0.0:8081:3000'
     volumes:
