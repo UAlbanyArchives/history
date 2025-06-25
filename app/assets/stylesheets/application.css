@@ -43,6 +43,22 @@ iframe#pdfViewer, .uv {
     height: 40rem;
 }
 
+#mirador-viewer {
+	height: 75vh;
+	position: relative;
+	margin: 0px -15px;
+}
+
+@media screen and (min-width: 992px) {
+	#mirador-viewer {
+		margin: 0px;
+	}
+}
+
+.mirador-window-close, .mirador-window-maximize {
+  display: none !important;
+}
+
 @media screen and (min-width: 992px) {
 	.card-columns {
 		column-count: 4;
