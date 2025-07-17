@@ -24,16 +24,33 @@
 				    Mirador.viewer({
 				      id: "mirador-viewer",
 				      windows: [{
-				        manifestId: "<%= manifest %>",
+				        loadedManifest: "<%= manifest %>",
 				        canvasIndex: <%= page - 1 %>,
 				        allowFullscreen: true,
-				        defaultSideBarPanel: 'none',
-				        sideBarOpenByDefault: false,
+				        zoomControls: true,
 				        thumbnailNavigationPosition: 'far-bottom'
 				      }],
+				      workspace: {
+						  showZoomControls: true,
+					  },
+				      requestConfig: {
+				        credentials: 'include',
+				      },
 				      workspaceControlPanel: { enabled: false },
+				      themes: {
+				        light: {
+				          palette: {
+				            primary: {
+				              main: '#46166B'
+				            }
+				          }
+				        }
+				      },
 				      window: {
-				        allowClose: false
+				        allowClose: false,
+				        showZoomControls: true,
+				        defaultSideBarPanel: 'none',
+				        sideBarOpenByDefault: false
 				      }
 				    });
 				  });

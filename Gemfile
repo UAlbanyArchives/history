@@ -58,7 +58,8 @@ gem "font-awesome-rails"
 gem 'truncate_html'
 
 # shared header, footer, etc.
-gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "bs4_migration"
+#gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "bs4_migration"
+gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "main"
 #gem 'grenander', path: '../grenander'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
