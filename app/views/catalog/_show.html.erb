@@ -21,6 +21,7 @@
 				<%= javascript_include_tag "/history/mirador/dist/mirador.min.js" %>
 				<script>
 				  document.addEventListener("DOMContentLoaded", function () {
+				  	const isMobile = window.innerWidth <= 768;
 				    Mirador.viewer({
 				      id: "mirador-viewer",
 				      windows: [{
@@ -28,7 +29,7 @@
 				        canvasIndex: <%= page - 1 %>,
 				        allowFullscreen: true,
 				        zoomControls: true,
-				        thumbnailNavigationPosition: 'far-bottom'
+				        thumbnailNavigationPosition: isMobile ? 'off' : 'far-bottom',
 				      }],
 				      workspace: {
 						  showZoomControls: true,
