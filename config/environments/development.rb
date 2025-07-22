@@ -75,5 +75,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   
   
-  config.hosts << "lib-espy-ws-d101.its.albany.edu"
+  config.hosts << "lib-arcweb-p101.lib.albany.edu"
 end

@@ -35,4 +35,15 @@ module ApplicationHelper
 		return res["meta"]["pages"]["total_count"]
 	end
 
+	def transform_url(original_url)
+		if original_url =~ %r{catalog/([^/]+)aspace_([0-9a-f]+)}
+			collection_id = $1
+			object_id = $2.sub(/^aspace_/, '')
+			"https://media.archives.albany.edu/#{collection_id.gsub('-', '.')}/#{object_id}/manifest.json"
+		else
+			nil
+			#raise "Unexpected URL format: #{original_url}"
+		end
+	end
+
 end

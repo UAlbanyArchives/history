@@ -10,7 +10,7 @@
 
   <% if document.key?("file") %>
     <div class="col-sm-12 col-md-4 order-md-2 col-lg-4 order-lg-2 col-xl-12 order-xl-1 text-center">
-      <img src="<%= document['file'] + '?file=thumbnail' %>" alt="Thumbnail of <%= document['title'] %>" %>
+      <img src="<%= document['file'] %>" alt="Thumbnail of <%= document['title'] %>" %>
     </div>
     <div class="col-sm-12 col-md-8 order-md-1 col-lg-8 order-lg-1 col-xl-12 order-xl-2">
     <p class="card-text"><%= truncate_html(document["description"], length: 300) %></p>

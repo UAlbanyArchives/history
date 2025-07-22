@@ -43,6 +43,22 @@ iframe#pdfViewer, .uv {
     height: 40rem;
 }
 
+#mirador-viewer {
+	height: 75vh;
+	position: relative;
+	margin: 0px -15px;
+}
+
+@media screen and (min-width: 992px) {
+	#mirador-viewer {
+		margin: 0px;
+	}
+}
+
+.mirador-window-close, .mirador-window-maximize {
+  display: none !important;
+}
+
 @media screen and (min-width: 992px) {
 	.card-columns {
 		column-count: 4;
@@ -140,4 +156,17 @@ iframe#pdfViewer, .uv {
 .center-search:focus {
 	border-color: #9e68c7;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #9e68c7;
+}
+
+.fullscreen-btn {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+	.mirador-window-close, [title="Full screen"] {
+		display: none !important;
+	}
+	.fullscreen-btn {
+		display: inline-block !important;
+	}
 }

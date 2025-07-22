@@ -5,27 +5,64 @@
 <div class="row">
 	<% if document["file"].present? %>
 		<div class="col-lg-6 order-lg-2">
-			
-			<% if document["iiif"][0] == "true" %>
-				<% if document.key? "representative_media" %>
-					<div class="uv">
-						<iframe style="width:100%; height:20rem;" aria-label="image view" src="https://archives.albany.edu/uv/uv.html#?manifest=<%= document["representative_media"] %>/manifest&config=https://archives.albany.edu/uv/uv-config.json" allowfullscreen="true" frameborder="0"></iframe>
-					</div>
-				<% else %>
-					<div class="uv">
-						<iframe style="width:100%; height:20rem;" aria-label="image view" src="https://archives.albany.edu/uv/uv.html#?manifest=<%= document["citation_links"][0] %>/manifest&config=https://archives.albany.edu/uv/uv-config.json" allowfullscreen="true" frameborder="0"></iframe>
-					</div>
-				<% end %>
-			<% else %>
-                <% if document["representative_media"].blank? and document["citation_pages"].present? %>
-                    <iframe id="pdfViewer" src="<%= document["file"] %>#page=<%= document["citation_pages"][0] %>" class="embededPDF"></iframe>
-                <% else %>
-                    <iframe id="pdfViewer" src="<%= document["file"] %>" class="embededPDF"></iframe>
-                <% end %>
+			<% if document.key? "representative_media" %>
+				<% manifest = transform_url(document['representative_media']) %>
+			<% elsif document["citation_links"].present? %>
+				<% manifest = transform_url(document["citation_links"][0]) %>
 			<% end %>
-            <div class="btn-btm">
-                <a href="https://archives.albany.edu/history-editor/events/<%= document["id"] %>/edit" type="button" class="btn btn-light float-right edit-btm">Edit</a>
-            </div>
+			<% if document["citation_pages"].present? %>
+				<% page = document["citation_pages"][0].to_i %>
+			<% else %>
+				<% page = 0 %>
+			<% end %>
+			
+			<% if manifest %>
+				<div class="d-flex justify-content-end mt-2">
+					<a href="https://media.archives.albany.edu?manifest=<%= manifest %>" class="fullscreen-btn btn btn-secondary btn-sm mb-2">
+				      <i class="fa fa-expand me-1"></i> Fullscreen
+				    </a>
+				</div>
+
+				<div id="mirador-viewer"></div>
+				<%= javascript_include_tag "/history/mirador/dist/mirador.min.js" %>
+				<script>
+				  document.addEventListener("DOMContentLoaded", function () {
+				  	const isMobile = window.innerWidth <= 768;
+				    Mirador.viewer({
+				      id: "mirador-viewer",
+				      windows: [{
+				        loadedManifest: "<%= manifest %>",
+				        canvasIndex: <%= page - 1 %>,
+				        allowFullscreen: true,
+				        zoomControls: true,
+				        thumbnailNavigationPosition: isMobile ? 'off' : 'far-bottom',
+				      }],
+				      workspace: {
+						  showZoomControls: true,
+					  },
+				      requestConfig: {
+				        credentials: 'include',
+				      },
+				      workspaceControlPanel: { enabled: false },
+				      themes: {
+				        light: {
+				          palette: {
+				            primary: {
+				              main: '#46166B'
+				            }
+				          }
+				        }
+				      },
+				      window: {
+				        allowClose: false,
+				        showZoomControls: true,
+				        defaultSideBarPanel: 'none',
+				        sideBarOpenByDefault: false
+				      }
+				    });
+				  });
+				</script>
+			<% end %>
 		</div>
 		<div class="col-lg-6 order-lg-1">
 	<% else %>
@@ -65,9 +102,9 @@
 	              <h4>Source Materials</h4>
 	              <div class="row">
 	                <% document["citation_files"].each_with_index do |cite, index| %>
-	                <div class="col-6 d-flex pb-3">
+	                <div class="col-md-6 col-sm-12 d-flex pb-3">
 	                <div class="card" style="width: 18rem; display:block">
-	                  <img height="150px" style="display:block;margin: auto;" src="<%= cite %>?file=thumbnail">
+	                  <img height="150px" style="display:block;margin: auto;" src="<%= cite %>">
 					  <div class="card-body">
 					  	<% if document["file"].present? %>
 							<a href="<%= document["citation_links"][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
@@ -82,10 +119,10 @@
 
 	            </div>
 			<% end %>
-			<% unless document["file"].present? %>
-				<a href="https://archives.albany.edu/history-editor/events/<%= document["id"] %>/edit" type="button" class="btn btn-light float-right">Edit</a>
-			<% end %>
 
 		</div>
+		<div class="col-12 order-lg-3">
+		<a href="https://archives.albany.edu/history-editor/events/<%= document["id"] %>/edit" type="button" class="btn btn-light float-right">Edit</a>
+	</div>
 	
 </div>
