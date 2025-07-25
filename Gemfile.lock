@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/UAlbanyArchives/grenander
-  revision: 4bfb6e5f4110604e64c4e7446d9dbdfb7e8f5c69
+  revision: e4e0fd5495860792d326fecbab545dfc4b1dafcf
   branch: bs4_migration
   specs:
     grenander (1.3.2)
