@@ -1,5 +1,4 @@
 FROM ruby:2.7.7-slim-bullseye AS builder
-MAINTAINER Gregory Wiedeman gwiedeman@albany.edu
 
 ENV RAILS_ENV=production
 
@@ -52,6 +51,7 @@ RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 # Copy application code from the builder stage and install gems
 COPY --from=builder /app /app
 WORKDIR /app
+RUN rm -rf /usr/local/bundle/bundler/gems/grenander-* || true
 RUN bundle install
 
 # Expose port 3000
