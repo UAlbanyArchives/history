@@ -57,7 +57,17 @@
 				        allowClose: false,
 				        showZoomControls: true,
 				        sideBarOpenByDefault: false
-				      }
+				      },
+				      miradorSharePlugin: {
+						embedOption: {
+							enabled: true,
+							embedUrlReplacePattern: [/^/, 'https://media.archives.albany.edu/?manifest=']
+						},
+						shareLink: {
+							enabled: true,
+							manifestIdReplacePattern: [/^/, 'https://media.archives.albany.edu/?manifest=']
+						}
+					  }
 				    });
 				  });
 				</script>
