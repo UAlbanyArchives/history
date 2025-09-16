@@ -20,12 +20,14 @@ RUN chmod 0644 /etc/cron.d/history-cron
 RUN crontab /etc/cron.d/history-cron
 
 # specifying the version is needed in older ruby image. Should not be needed in ruby 3+.
-RUN gem install bundler -v 2.4.22
+RUN gem update --system 3.4.22 && \
+    gem install bundler -v 2.4.22
 
 # Install gems
 WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
+RUN bundle update grenander
 
 # Copy application code
 COPY . /app
@@ -48,11 +50,16 @@ RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     apt-get update && \
     apt-get install -y yarn
 
+# specifying the version is needed in older ruby image. Should not be needed in ruby 3+.
+RUN gem update --system 3.4.22 && \
+    gem install bundler -v 2.4.22
+
 # Copy application code from the builder stage and install gems
 COPY --from=builder /app /app
 WORKDIR /app
-RUN rm -rf /usr/local/bundle/bundler/gems/grenander-* || true
+RUN rm -rf /usr/local/bundle/cache/bundler/git/grenander-* || true
 RUN bundle install
+RUN bundle update grenander
 
 # Expose port 3000
 ARG DEFAULT_PORT 3000
