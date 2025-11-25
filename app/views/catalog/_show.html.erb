@@ -1,6 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
-<h5 class="text-muted"><%= document["display_date"] %></h5>
+<small class="h5 pl-4 text-muted"><%= document["display_date"] %></small>
 
 <div class="row">
 	<% if document["file"].present? %>
@@ -89,7 +89,7 @@
 
 	        <% if document["subjects"].present? %>
 	            <div class="card-body">
-	              <h4>Subjects</h4>
+	              <h2 class="h4">Subjects</h2>
 	              <ul class="list-group mb-3">
 	                <% document["subjects"].sort.each do |subject| %>
 	                  <a href="/history/catalog?f[subjects][]=<%= CGI.escape subject %>" class="list-group-item list-group-item-action list-group-item-info"><%= subject %></a>
@@ -100,7 +100,7 @@
 
 	        <% if document["citation_description"].present? %>
 	            <div class="card-body">
-	                <h4>Source Details</h4>
+	                <h2 class="h4">Source Details</h2>
 	                <p class="card-text"><%= CGI.unescapeHTML(document["citation_description"]).html_safe %></p>
 	            </div>
 	        <% end %>
@@ -108,15 +108,15 @@
 	        <% if document["citation_files"].present? %>
 	            <div class="card-body container">
 	              
-	              <h4>Source Materials</h4>
+	              <h2 class="h4">Source Materials</h2>
 	              <div class="row">
-	                <% document["citation_files"].each_with_index do |cite, index| %>
+	                <% document["citation_links"].each_with_index do |cite, index| %>
 	                <div class="col-md-6 col-sm-12 d-flex pb-3">
 	                <div class="card" style="width: 18rem; display:block">
-	                  <img height="150px" style="display:block;margin: auto;" src="<%= cite %>">
+	                  <img height="150px" style="display:block;margin: auto;" src="<%= document['citation_files'][index] %>" alt="Thumbnail for <%= document['citation_text'][index] %>">
 					  <div class="card-body">
 					  	<% if document["file"].present? %>
-							<a href="<%= document["citation_links"][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
+							<a href="<%= document['citation_links'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
 						<% else %>
 							<a href="<%= document["citation_links"][index] %>" class="card-link"><%= CGI.unescapeHTML(document["citation_text"][index]).html_safe %></a>
 						<% end %>
