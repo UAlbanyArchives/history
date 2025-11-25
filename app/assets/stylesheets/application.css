@@ -185,6 +185,6 @@ iframe#pdfViewer, .uv {
   background-color: #d6d6d6; /* slightly darker background */
 }
 
-.text-muted, .search-history .filter-name, .search-history .filter-separator {
+.search-history .filter-name, .search-history .filter-separator {
 	color: #642a90 !important;
 }

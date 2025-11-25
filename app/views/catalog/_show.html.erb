@@ -116,7 +116,11 @@
 	                  <img height="150px" style="display:block;margin: auto;" src="<%= document['citation_files'][index] %>" alt="Thumbnail for <%= document['citation_text'][index] %>">
 					  <div class="card-body">
 					  	<% if document["file"].present? %>
-							<a href="<%= document['citation_links'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
+					  		<% if document["citation_pages"].length >= index %>
+								<a href="<%= document['citation_links'][index] %>?page=<%= document['citation_pages'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
+							<% else %>
+								<a href="<%= document['citation_links'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
+							<% end %>
 						<% else %>
 							<a href="<%= document["citation_links"][index] %>" class="card-link"><%= CGI.unescapeHTML(document["citation_text"][index]).html_safe %></a>
 						<% end %>
