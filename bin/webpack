@@ -9,6 +9,10 @@ ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
 
 require "bundler/setup"
 
+# Ensure Ruby's stdlib Logger is loaded so ActiveSupport logger helpers
+# (used by webpacker during assets:precompile) can reference `Logger`.
+require "logger"
+
 require "webpacker"
 require "webpacker/webpack_runner"
 
