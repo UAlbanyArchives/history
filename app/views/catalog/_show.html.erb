@@ -92,7 +92,9 @@
 	              <h2 class="h4">Subjects</h2>
 	              <ul class="list-group mb-3">
 	                <% document["subjects"].sort.each do |subject| %>
-	                  <a href="/history/catalog?f[subjects][]=<%= CGI.escape subject %>" class="list-group-item list-group-item-action list-group-item-info"><%= subject %></a>
+	                  <li class="list-group-item">
+	                  	<a href="/history/catalog?f[subjects][]=<%= CGI.escape subject %>" class="list-group-item list-group-item-action list-group-item-info"><%= subject %></a>
+	                  </li>
 	                <% end %>
 	              </ul>
 	            </div>

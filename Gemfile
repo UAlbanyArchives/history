@@ -1,14 +1,17 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.7'
+ruby '3.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.7.3'
+gem 'rails', '~> 7.2.1'
+# Keep legacy asset pipeline
+gem 'sprockets-rails', '~> 3.4'
+gem 'sprockets', '>= 4.1.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.6.2'
 # Use Puma as the app server
-gem 'puma', '~> 5.6.4'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -51,14 +54,16 @@ group :test do
 end
 
 # Customizations
-gem 'blacklight', '~> 7.33.0'
-gem 'blacklight_range_limit', '~> 7.9.1'
+gem 'blacklight', '~> 8'
+gem 'blacklight_range_limit', '~> 8'
 gem "font-awesome-rails"
+#gem 'font-awesome-sass', '~> 5.15'
+
 # This could be trouble, I dunno how supported it is https://github.com/nono/HTML-Truncator
 gem 'truncate_html'
 
 # shared header, footer, etc.
-gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "bs4_migration"
+gem 'grenander', git: 'https://github.com/UAlbanyArchives/grenander', branch: "main"
 #gem 'grenander', path: '../grenander'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,8 +74,6 @@ group :development, :test do
 end
 
 gem 'rsolr', '>= 1.0', '< 3'
-gem 'bootstrap', '~> 4.0'
+gem 'bootstrap', '~> 5.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
-
-
