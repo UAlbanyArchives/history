@@ -110,24 +110,35 @@
 	              
 	              <h2 class="h4">Source Materials</h2>
 	              <div class="row">
-	                <% document["citation_links"].each_with_index do |cite, index| %>
-	                <div class="col-md-6 col-sm-12 d-flex pb-3">
-	                <div class="card" style="width: 18rem; display:block">
-	                  <img height="150px" style="display:block;margin: auto;" src="<%= document['citation_files'][index] %>" alt="Thumbnail for <%= document['citation_text'][index] %>">
-					  <div class="card-body">
-					  	<% if document["file"].present? %>
-					  		<% if document["citation_pages"].length >= index %>
-								<a href="<%= document['citation_links'][index] %>?page=<%= document['citation_pages'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
-							<% else %>
-								<a href="<%= document['citation_links'][index] %>" class="card-link"><%= document["citation_text"][index] %></a>
-							<% end %>
-						<% else %>
-							<a href="<%= document["citation_links"][index] %>" class="card-link"><%= CGI.unescapeHTML(document["citation_text"][index]).html_safe %></a>
-						<% end %>
-	                  </div>
-	                </div>
-	                </div>
-	                <% end %>
+	                <% files = Array(document["citation_files"]) %>
+					<% pages = Array(document["citation_pages"]) %>
+
+					<% document["citation_links"].each_with_index do |cite, index| %>
+					  <div class="col-md-6 col-sm-12 d-flex pb-3">
+					    <div class="card" style="width: 18rem; display:block">
+
+					      <img height="150px"
+					           style="display:block;margin: auto;"
+					           src="<%= files[index] %>"
+					           alt="Thumbnail for <%= document['citation_text'][index] %>">
+
+					      <div class="card-body">
+					        <% if pages[index].present? %>
+					          <a href="<%= cite %>?page=<%= pages[index] %>"
+					             class="card-link">
+					            <%= document["citation_text"][index] %>
+					          </a>
+					        <% else %>
+					          <a href="<%= cite %>"
+					             class="card-link">
+					            <%= CGI.unescapeHTML(document["citation_text"][index]).html_safe %>
+					          </a>
+					        <% end %>
+					      </div>
+
+					    </div>
+					  </div>
+					<% end %>
 	              </div>
 
 	            </div>
