@@ -1,6 +1,6 @@
 services:
   history:
-    image: ruby:2.7.7-slim-bullseye
+    image: ruby:3.3.4-slim-bookworm
     container_name: history-dev
     ports:
       - '3000:3000'
@@ -10,10 +10,10 @@ services:
     working_dir: /app
     command: >
       bash -c "apt update &&
-              apt install -y build-essential apt-utils git nodejs &&
+              apt install -y build-essential apt-utils git nodejs pkg-config &&
               cd /app &&
-              gem install bundler -v 2.4.22 &&
+              gem install bundler &&
               bundle install &&
-              bundle update grenander &&
+              bundle exec ruby -rbundler/setup -e 'Bundler.load.specs.each(&:full_gem_path)' &&
               bundle exec rails db:migrate &&
               bundle exec rails server -b 0.0.0.0"

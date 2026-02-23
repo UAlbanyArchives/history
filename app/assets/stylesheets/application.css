@@ -10,24 +10,21 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require 'blacklight_bundle'
+ *= require 'grenander/blacklight'
+ *= require 'grenander'
+ *= require 'grenander/mathes'
+ *= require 'timeline'
  *= require_self
- 
- *
- * Used by blacklight_range_limit
- *= require  'blacklight_range_limit'
- *= require  'grenander/main'
- *= require  'grenander/navbar'
- *= require  'grenander/search-source'
- *= require  'grenander/main'
- *= require  'grenander/footer'
- *= require  'font-awesome'
- *
-*/
+ */
 
 
 body {
     background: #e2e1e0;
+}
+
+.blacklight-catalog-show .pagination-search-widgets {
+  display: none;
 }
 
 span.document-counter {
@@ -59,6 +56,35 @@ iframe#pdfViewer, .uv {
   display: none !important;
 }
 
+.home-masonry {
+	column-count: 1;
+	column-gap: 1rem;
+}
+
+.home-masonry-item {
+	break-inside: avoid;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+	.home-masonry {
+		column-count: 2;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.home-masonry {
+		column-count: 3;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.home-masonry {
+		column-count: 4;
+	}
+}
+
 @media screen and (min-width: 992px) {
 	.card-columns {
 		column-count: 4;
@@ -85,9 +111,17 @@ iframe#pdfViewer, .uv {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
     border-radius: .25rem;
     padding: 1.25rem;
+    transition: background-color 0.2s ease;
 }
 
+.doc-container .document:hover,
+article.document:hover {
+	background-color: #EBE6F0 !important;
+}
 
+.list-group-item {
+	border: 1px solid rgba(0,0,0,0.125);
+}
 
 .facet-limit {
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
@@ -128,10 +162,31 @@ iframe#pdfViewer, .uv {
 
 .subject-cards {
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+	transition: background-color 0.2s ease;
 }
 
 .subject-cards:hover, .subject-cards:active {
 	background-color: #EBE6F0;
+}
+
+.subject-card-link {
+	color: #642a90;
+	text-decoration: none;
+}
+
+.subject-card-link:hover {
+	color: #46166B;
+	text-decoration: none;
+}
+
+.document-card-link {
+	color: #642a90;
+	text-decoration: none;
+}
+
+.document-card-link:hover {
+	color: #46166B;
+	text-decoration: none;
 }
 
 .list-group-item span.badge {

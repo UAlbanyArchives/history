@@ -1,56 +1,61 @@
-<div class="card-columns">
-
-	<% subject_options.sort.each do |name, url| %>
-
-		<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>">
-			<div class="card subject-cards">
-			<img class="card-img-top" src="<%= url %>?file=thumbnail" alt="Thumbnail image for <%= name %>">
-			<div class="card-body text-center">
-				<h5 class="card-title"><%= name %></h5>
-			</div>
-			</div>
-		</a>
-
-	<% end %>
-
-	<% decades = (184..200) %>
-	<div class="card decade-card">
-		<div class="card-header">
-			Decades
-		</div>
-		<div class="list-group">
-			<% decades.each do |decade_number| %>
-				<% decade = decade_number.to_s + "0" %>
-				<% decade_end = decade.to_i + 10 %>
-				<% search_path = "?range[date][begin]=" + decade + "&range[date][end]=" + decade_end.to_s %>
-				<%# decade_count = decade_counter(search_path, decade, decade_end.to_s) %>
-
-				<a href="/history<%= search_path %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-					<%= decade %> - <%= decade_end.to_s %>
-					<span class="badge badge-primary badge-pill"><%# decade_count %></span>
-				</a>
-
+<div class="row">
+	<div class="col-lg-9">
+		<div class="home-masonry">
+			<% subject_options.sort.each do |name, url| %>
+				<div class="home-masonry-item">
+					<div class="card subject-cards">
+						<img class="card-img-top" src="<%= url %>?file=thumbnail" alt="Thumbnail image for <%= name %>">
+						<div class="card-body text-center">
+							<h5 class="card-title">
+								<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>" class="stretched-link subject-card-link"><%= name %></a>
+							</h5>
+						</div>
+					</div>
+				</div>
 			<% end %>
 		</div>
 	</div>
 
-	
+	<div class="col-lg-3">
+		<% decades = (184..200) %>
+		<div class="card decade-card">
+			<div class="card-header">
+				Decades
+			</div>
+			<div class="list-group">
+				<% decades.each do |decade_number| %>
+					<% decade = decade_number.to_s + "0" %>
+					<% decade_end = decade.to_i + 10 %>
+					<% search_path = "?range[date][begin]=" + decade + "&range[date][end]=" + decade_end.to_s %>
+					<%# decade_count = decade_counter(search_path, decade, decade_end.to_s) %>
 
+					<a href="/history<%= search_path %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+						<%= decade %> - <%= decade_end.to_s %>
+						<span class="badge bg-primary rounded-pill"><%# decade_count %></span>
+					</a>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div class="card col-md-6 col-lg-9">
-	<div class="card-body">
-		<h4 class="card-title">About</h4>
-		<p class="card-text">Much of the content in this timeline was originally curated by former University Archvist Geoffrey P. Williams as part of the <i><a href="<%= request.base_url + "/web/chronology" %>">Chronological History of the University at Albany, SUNY, 1844-2008</a></i>. Content was also drawn from the <i><a href="<%= request.base_url + "/web/onthemake" %>">University on the Make, 1960-1970</a></i> exhibit.</p>
+<div class="row mt-3">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">About</h4>
+				<p class="card-text">Much of the content in this timeline was originally curated by former University Archvist Geoffrey P. Williams as part of the <i><a href="<%= request.base_url + "/web/chronology" %>">Chronological History of the University at Albany, SUNY, 1844-2008</a></i>. Content was also drawn from the <i><a href="<%= request.base_url + "/web/onthemake" %>">University on the Make, 1960-1970</a></i> exhibit.</p>
 
-		<h5 class="card-subtitle mb-2 text-muted">Additional Contributors</h5>
-		<ul>
-			<li>David Abril</li>
-			<li>Ben Covell</li>
-			<li>Roni Kotel</li>
-			<li>Sheri Sarnoff</li>
-			<li>Saul Zeitlin</li>
-		</ul>
-
+				<h5 class="card-subtitle mb-2 text-muted">Additional Contributors</h5>
+				<ul>
+					<li>David Abril</li>
+					<li>Ben Covell</li>
+					<li>Roni Kotel</li>
+					<li>Sheri Sarnoff</li>
+					<li>Saul Zeitlin</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>

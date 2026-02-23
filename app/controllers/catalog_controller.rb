@@ -34,6 +34,7 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title'
     #config.index.display_type_field = 'format'
     #config.index.thumbnail_field = 'file'
+    config.index.partials = [:index]
 
     #config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 
@@ -53,6 +54,7 @@ class CatalogController < ApplicationController
     config.show.title_field = 'title'
     #config.show.display_type_field = 'format'
     config.show.thumbnail_field = 'file'
+    config.show.partials = [:show]
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -140,6 +142,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'published_vern_ssim', label: 'Published'
     config.add_show_field 'lc_callnum_ssim', label: 'Call number'
     config.add_show_field 'isbn_ssim', label: 'ISBN'
+    # Show fields shouldn't actually display. _show.html.erb should handle them.
+    config.show_fields = {}
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
