@@ -224,7 +224,7 @@ section.show-document #document::after {
     position: absolute;
     width: 25px;
     height: 25px;
-    left: -48px;
+    left: -46px;
     background-color: white;
     border: 4px solid #eaaa00;
     top: 43px;

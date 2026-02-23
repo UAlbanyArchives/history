@@ -147,19 +147,6 @@ article.document:hover {
 	color: #fff;
 }
 
-.pagination .page-item a {
-	color: #46166B !important;
-}
-
-.pagination .page-item .page-link:focus {
-	box-shadow: 0 0 0 0.2rem #46166B !important; 
-}
-
-.page-item.active .page-link{
-	background-color: #7a4ea0 !important;
-	border-color: #7a4ea0 !important;
-}
-
 .subject-cards {
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
 	transition: background-color 0.2s ease;

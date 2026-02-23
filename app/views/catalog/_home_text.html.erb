@@ -1,3 +1,7 @@
+<h1 class="sr-only visually-hidden top-content-title">Timeline of UAlbany History</h1>
+
+<h2 class="sr-only visually-hidden top-content-title">Subject Categories</h2>
+
 <div class="row">
 	<div class="col-lg-9">
 		<div class="home-masonry">
@@ -6,9 +10,9 @@
 					<div class="card subject-cards">
 						<img class="card-img-top" src="<%= url %>?file=thumbnail" alt="Thumbnail image for <%= name %>">
 						<div class="card-body text-center">
-							<h5 class="card-title">
+							<h3 class="h5 card-title">
 								<a href="/history/catalog?f[subjects][]=<%= CGI.escape name %>" class="stretched-link subject-card-link"><%= name %></a>
-							</h5>
+							</h3>
 						</div>
 					</div>
 				</div>
@@ -44,10 +48,10 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">About</h4>
+				<h2 class="h4 card-title">About</h2>
 				<p class="card-text">Much of the content in this timeline was originally curated by former University Archvist Geoffrey P. Williams as part of the <i><a href="<%= request.base_url + "/web/chronology" %>">Chronological History of the University at Albany, SUNY, 1844-2008</a></i>. Content was also drawn from the <i><a href="<%= request.base_url + "/web/onthemake" %>">University on the Make, 1960-1970</a></i> exhibit.</p>
 
-				<h5 class="card-subtitle mb-2 text-muted">Additional Contributors</h5>
+				<h3 class="h5 card-subtitle mb-2 text-muted">Additional Contributors</h3>
 				<ul>
 					<li>David Abril</li>
 					<li>Ben Covell</li>

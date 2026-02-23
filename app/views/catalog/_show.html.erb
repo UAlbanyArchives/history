@@ -19,7 +19,7 @@
 			<% if manifest %>
 				<div class="d-flex justify-content-end mt-2">
 					<a href="https://media.archives.albany.edu?manifest=<%= manifest %>" class="fullscreen-btn btn btn-secondary btn-sm mb-2">
-				      <i class="fa fa-expand me-1"></i> Fullscreen
+				      <i class="fas fa-expand me-1"></i> Fullscreen
 				    </a>
 				</div>
 
@@ -79,16 +79,16 @@
 	<% end %>
         
 		
-			<div class="card-body">
+			<div class="card-body py-2">
 				<% if document["file"].present? %>
-					<p class="card-text"><%= document["description"] %></p>
+					<p class="card-text p-2"><%= document["description"] %></p>
 				<% else %>
-					<p class="card-text"><%= CGI.unescapeHTML(document["description"]).html_safe %></p>
+					<p class="card-text p-2"><%= CGI.unescapeHTML(document["description"]).html_safe %></p>
 				<% end %>
           	</div>
 
 	        <% if document["subjects"].present? %>
-	            <div class="card-body">
+	            <div class="card-body py-2">
 	              <h2 class="h4">Subjects</h2>
 	              <ul class="list-group mb-3">
 	                <% document["subjects"].sort.each do |subject| %>
@@ -99,14 +99,14 @@
 	        <% end %>
 
 	        <% if document["citation_description"].present? %>
-	            <div class="card-body">
+	            <div class="card-body py-2">
 	                <h2 class="h4">Source Details</h2>
-	                <p class="card-text"><%= CGI.unescapeHTML(document["citation_description"]).html_safe %></p>
+	                <p class="card-text p-2"><%= CGI.unescapeHTML(document["citation_description"]).html_safe %></p>
 	            </div>
 	        <% end %>
 
 	        <% if document["citation_files"].present? %>
-	            <div class="card-body container">
+	            <div class="card-body py-2 container">
 	              
 	              <h2 class="h4">Source Materials</h2>
 	              <div class="row">
