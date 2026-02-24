@@ -12,4 +12,5 @@
 </div>
 <% end %>
 
-<%= link_to t('blacklight.header_links.search_history'), blacklight.search_history_path, class: 'btn btn-primary' %>
+<% search_history_url = respond_to?(:search_history_path) ? search_history_path : '/history/search_history' %>
+<%= link_to t('blacklight.header_links.search_history'), search_history_url, class: 'btn btn-primary' %>

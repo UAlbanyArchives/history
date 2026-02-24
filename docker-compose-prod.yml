@@ -2,6 +2,9 @@ services:
   history:
     container_name: history
     image: history
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - '0.0.0.0:8081:3000'
     volumes:
