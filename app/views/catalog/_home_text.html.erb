@@ -30,7 +30,7 @@
 				<% decades.each do |decade_number| %>
 					<% decade = decade_number.to_s + "0" %>
 					<% decade_end = decade.to_i + 10 %>
-					<% search_path = "?range[date][begin]=" + decade + "&range[date][end]=" + decade_end.to_s %>
+					<% search_path = "?range[date_range_isim][begin]=" + decade + "&range[date_range_isim][end]=" + decade_end.to_s %>
 					<%# decade_count = decade_counter(search_path, decade, decade_end.to_s) %>
 
 					<a href="/history<%= search_path %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
