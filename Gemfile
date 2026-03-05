@@ -56,6 +56,9 @@ gem "font-awesome-sass", '~> 5.15'
 # This could be trouble, I dunno how supported it is https://github.com/nono/HTML-Truncator
 gem 'truncate_html'
 
+# Use JavaScript with ESM import maps
+gem 'importmap-rails'
+
 # Bootstrap for Blacklight
 gem 'bootstrap', '~> 5.3'
 

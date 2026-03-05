@@ -81,7 +81,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'subjects', label: 'Subjects', limit: 15, index_range: 'A'..'Z'
-    config.add_facet_field 'date', label: 'Date', range: true
+    config.add_facet_field 'date_range_isim', label: 'Date', range: true
     config.add_facet_field 'format', label: 'Format'
     config.add_facet_field 'pub_date_ssim', label: 'Publication Year', single: true
     config.add_facet_field 'subject_ssim', label: 'Topic', limit: 20, index_range: 'A'..'Z'

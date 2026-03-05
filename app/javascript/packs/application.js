@@ -15,4 +15,9 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import BlacklightRangeLimit from "blacklight-range-limit"
+
+// Initialize Blacklight Range Limit when page loads
+if (window.Blacklight) {
+  BlacklightRangeLimit.init({ onLoadHandler: Blacklight.onLoad })
+}

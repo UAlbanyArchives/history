@@ -1,5 +1,7 @@
 {
   "name": "history",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "blacklight-range-limit": "^9.2.0"
+  }
 }
