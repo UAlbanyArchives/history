@@ -1,7 +1,5 @@
-GIT
-  remote: https://github.com/UAlbanyArchives/grenander
-  revision: f9f290790224e9f4d07be97dbd9ee573f62be223
-  branch: main
+PATH
+  remote: /grenander
   specs:
     grenander (2.0.0)
       d3-rails

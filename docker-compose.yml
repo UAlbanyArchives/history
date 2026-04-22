@@ -6,8 +6,10 @@ services:
       - '3000:3000'
     volumes:
       - '.:/app'
-    #  - '../grenander:/grenander'
+      - '../grenander:/grenander'
     working_dir: /app
+    environment:
+      - GRENANDER_PATH=/grenander
     command: >
       bash -c "apt update &&
               apt install -y build-essential apt-utils git nodejs pkg-config &&
