@@ -5,6 +5,7 @@
 <div class="row">
 	<% if document["file"].present? %>
 		<div class="col-lg-6 order-lg-2">
+			<h2 class="h4"><%= document["citation_text"].first %></h2>
 			<% if document.key? "representative_media" %>
 				<% manifest = transform_url(document['representative_media']) %>
 			<% elsif document["citation_links"].present? %>
@@ -34,6 +35,7 @@
 				        loadedManifest: "<%= manifest %>",
 				        canvasIndex: <%= page - 1 %>,
 				        allowFullscreen: true,
+				        hideWindowTitle: true,
 				        zoomControls: true,
 				        thumbnailNavigationPosition: isMobile ? 'off' : 'far-bottom',
 				      }],
