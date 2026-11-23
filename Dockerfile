@@ -66,6 +66,7 @@ RUN gem install bundler
 # Copy application code from the builder stage and install gems
 COPY --from=builder /app /app
 WORKDIR /app
+RUN bundle install
 
 # Expose port 3000
 ARG DEFAULT_PORT 3000
