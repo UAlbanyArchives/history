@@ -25,10 +25,7 @@ RUN gem install bundler
 # Copy application code
 COPY . /app
 
-# Remove development Gemfile.lock to force fresh resolution from Gemfile
-# This ensures grenander is loaded from GitHub, not from local dev path
 WORKDIR /app
-RUN rm -f Gemfile.lock
 
 # Install gems
 RUN bundle install && \
@@ -69,11 +66,6 @@ RUN gem install bundler
 # Copy application code from the builder stage and install gems
 COPY --from=builder /app /app
 WORKDIR /app
-
-# Remove any lock files to ensure fresh bundle from builder
-RUN rm -f Gemfile.lock && \
-    bundle install && \
-    bundle exec ruby -rbundler/setup -e "Bundler.load.specs.each(&:full_gem_path)"
 
 # Expose port 3000
 ARG DEFAULT_PORT 3000
