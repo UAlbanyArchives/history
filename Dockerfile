@@ -45,7 +45,18 @@ RUN --mount=type=secret,id=master_key \
 FROM ruby:3.3.4-slim-bookworm
 
 # Install dependencies
-RUN apt-get update -qq && apt-get install -y build-essential apt-utils git cron curl nodejs pkg-config
+RUN apt-get update -qq && \
+    apt-get install -y \
+      ca-certificates \
+      build-essential \
+      apt-utils \
+      git \
+      cron \
+      pkg-config \
+      curl && \
+    update-ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
 # The regular apt install yarn isn't as up to date as we need
 RUN curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
